@@ -1,40 +1,47 @@
-# JN-W02 Golden Hour — Sticky Hero Animation
+# JN-W02 — Love Beneath the Waves
 
-The first section is a single pinned scene driven by one GSAP ScrollTrigger timeline. The other five sections are unchanged.
+Mobile-first cinematic sequence: **Sunset → Dive → Underwater Invitation → Resurface → Celebration**.
 
-## Storyboard
+## Chapters
 
-| Scroll progress | Visual state |
-| --- | --- |
-| 0–20% | Full editorial names, ocean glow, gentle independent wave motion |
-| 20–50% | Names rise and fade while distant ocean approaches slowly |
-| 50–70% | Midground / foreground water expands with faster depth movement |
-| 70–88% | Ivory wave rises from the shoreline, hiding the sea |
-| 88–100% | An invitation teaser appears on the full ivory frame |
-| After pin release | Normal scrolling continues into the full invitation letter |
+| Chapter | Scrolling | Visual treatment |
+| --- | --- | --- |
+| 01 Sunset dive | Pinned + GSAP scrub | Sunset and ocean approach; realistic foam line rises; underwater photograph and blue grading move above the surface; bubbles and light rays emerge |
+| 02 Invitation | Natural scroll, no pin | Centered editable ivory letter, legible on a deep-teal ocean backdrop; animated ambient particles |
+| 03 Resurface | Pinned + GSAP scrub | Depth recedes; golden sky / wedding ceremony image moves downward across the camera as the waterline descends; title reveals |
+| 04 Celebration | Natural scroll | Date and ceremony / reception information on warm ivory |
+| 05-07 Existing sections | Natural scroll | Gallery, destination, and closing remain the same |
 
-## Architecture
+The two cinematic chapters each use a stable *pinned viewport* and animate only its descendants. Backscroll is fully reversible. The invitation is not pinned, and guests may pause to read.
 
-- `components/CoastalHero.tsx`: layered hero JSX, GSAP entrance and scroll timeline.
-- `app/globals.css`: compositing and responsive styles.
-- `lib/wedding.ts`: editable names/date/hero photo; actual couple details must replace demo content.
-- Pin target: `.coast-viewport`, separate from transforms applied to the moving layers.
-- Scroll distances: approximately 1.4 extra screen heights on mobile and 1.7 on desktop, responsive to viewport height.
-- No scroll hijacking or forced wheel listener. Standard browser scrolling and anchors work.
-- Media query `prefers-reduced-motion: reduce` skips the pinned animation entirely, showing a readable standard hero and normal page flow.
-- Main animation uses transform/opacity only; ambient SVG motion animates the inner SVG rather than the pinned layer.
-- The final wipe matches the letter section background `#FAF4E9`, creating a seamless color transition.
+Approximate additional scroll distance: **1.55 viewports for the dive and 1.1 for resurfacing on mobile**, **1.85 and 1.3 on desktop**. Animations use transform/opacity and GSAP ScrollTrigger; there is no scroll-jacking or looping video.
 
-## Local preview
+## Files
+
+- `components/CoastalHero.tsx`: sunset and descent
+- `components/OceanAtmosphere.tsx`: reusable deterministic bubbles, underwater beams, and waterline SVG
+- `components/UnderwaterInvitation.tsx`: content and editable HTML letter
+- `components/ResurfaceScene.tsx`: underwater ascent and ceremony reveal
+- `components/CoastalExperience.tsx`: remaining sections and page orchestration
+- `app/globals.css`: all responsive styles
+- `lib/wedding.ts`: replaceable client details and images, including `images.underwater`
+
+## Review
 
 ```powershell
+cd "D:\my project\Myanmar hesitage\Coastal-Romance-Essential"
 git pull origin main
 npm install
 npm run dev
 ```
 
-Open http://localhost:3000 on laptop. For mobile use http://YOUR-LAPTOP-IP:3000 with phone and laptop connected to the same Wi-Fi. Test especially Safari iOS, Chrome Android, touch scrolling and landscape orientation. A successful static build cannot verify the visual results on actual devices.
+Use http://localhost:3000 on your laptop, or your laptop's actual LAN IPv4 address followed by `:3000` on a phone sharing the same Wi-Fi network.
 
-## Optional next refinement
+Test 320px, 390px, 430px, desktop; scroll slowly; reverse scroll; test tap/keyboard on the gallery; check Safari on iOS and Chrome on Android. `prefers-reduced-motion: reduce` disables both pinned chapters and continuous particle motion.
 
-Replace the demo ocean photograph with art-directed coastal imagery suited to the layered masks. All foreground SVG silhouettes and sky gradients are coded separately and can later be replaced with image assets without rewriting ScrollTrigger.
+## Still to refine
+
+The underwater scene currently uses free-stock Unsplash photography combined with SVG and CSS depth layers. It is a functioning prototype, **not a physically simulated 3D ocean**. Replace demo images with art-directed transparent or layered visual assets to increase realism. Test performance and scroll-pinning on actual mobile hardware.
+
+Photo reference: https://unsplash.com/photos/the-sun-is-shining-over-the-ocean-water-LirxfjhcU08
+Sunset reference: https://unsplash.com/photos/the-sun-is-setting-over-the-ocean-on-the-beach-YpiC8yGGZKY

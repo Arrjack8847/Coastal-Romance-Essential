@@ -6,6 +6,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowLeft, ArrowRight, ArrowUpRight, CalendarDays, MapPin, X } from "lucide-react";
 import CoastalHero from "@/components/CoastalHero";
+import UnderwaterInvitation from "@/components/UnderwaterInvitation";
+import ResurfaceScene from "@/components/ResurfaceScene";
 import { wedding } from "@/lib/wedding";
 
 function SmallFlourish({ light = false }: { light?: boolean }) {
@@ -153,36 +155,14 @@ export default function CoastalExperience() {
       {/* SECTION 01 — PINNED GOLDEN HOUR SCROLL CHAPTER */}
       <CoastalHero />
 
-      {/* SECTION 02 — THE LETTER */}
-      <section id="invitation" className="letter-section section-padding" aria-labelledby="letter-heading">
-        <WaveEdge className="letter-edge"/>
-        <div className="letter-wash letter-wash-left" aria-hidden="true"/>
-        <div className="letter-wash letter-wash-right" aria-hidden="true"/>
-        <div className="letter-content">
-          <div className="section-heading js-reveal">
-            <p className="eyebrow">FROM OUR HEARTS TO YOURS</p>
-            <SmallFlourish/>
-          </div>
-          <p className="letter-prelude js-reveal">To our favorite people,</p>
-          <h2 className="editorial-title letter-title js-reveal" id="letter-heading">Every tide brings<br/><em>us closer.</em></h2>
-          <div className="letter-body js-reveal">
-            {wedding.invitation.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-          </div>
-          <div className="signature js-reveal">
-            <span>With all our love,</span>
-            <strong>{wedding.shortNames}</strong>
-          </div>
-          <div className="letter-footnote js-reveal"><span className="letter-footnote-line"/><span>AN OCEAN OF LOVE AWAITS</span><span className="letter-footnote-line"/></div>
-        </div>
-      </section>
+      {/* SECTION 02 — NATURAL-SCROLL UNDERWATER INVITATION */}
+      <UnderwaterInvitation />
+
+      {/* CINEMATIC ASCENT: UNDERWATER TO GOLDEN HOUR CEREMONY */}
+      <ResurfaceScene />
 
       {/* SECTION 03 — THE CELEBRATION */}
       <section id="celebration" className="celebration-section" aria-labelledby="celebration-heading">
-        <div className="celebration-photo js-reveal">
-          <Image src={wedding.images.ceremony} fill unoptimized sizes="(max-width: 900px) 100vw, 52vw" alt="Romantic wedding ceremony photograph" className="image-cover"/>
-          <div className="photo-fade" aria-hidden="true"/>
-          <span className="photo-label">AN UNFORGETTABLE DAY BY THE SEA</span>
-        </div>
         <div className="celebration-info">
           <div className="js-reveal">
             <p className="eyebrow">THE DAY WE SAY I DO</p>

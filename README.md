@@ -1,51 +1,49 @@
 # JN-W02 — Coastal Romance Essential
 
-A mobile-first, cinematic yet lightweight, six-section digital wedding invitation by **JackNex Studio**.
+**Love Beneath the Waves** — a mobile-first Golden Hour wedding invitation experience, crafted for JackNex Studio.
 
-## Golden Hour experience
+## Experience
 
-1. The Endless Horizon — animated layered sunset/ocean hero.
-2. A Love as Endless as the Sea — editorial invitation letter.
-3. The Celebration — date and ceremony/reception details.
-4. Moments by the Sea — asymmetric tap-to-expand gallery.
-5. Where We'll Say I Do — venue, address and directions.
-6. Forever Begins Here — closing horizon, countdown and add-to-calendar.
+Guests arrive at a golden sunset beach, **scroll into the ocean**, find a floating underwater invitation, then **resurface into a wedding ceremony**. Native scrolling continues into the gallery, venue, and closing message.
 
-## Stack
+- **Scene 01 · Golden Hour Dive** — pinned layered ocean, moving waterline, reversible GSAP scrub.
+- **Scene 02 · Underwater Invitation** — real editable HTML wedding details, natural scrolling, sunbeams and bubbles.
+- **Scene 03 · Resurface to the Celebration** — second pinned wave passage, then date, ceremony, and reception details.
+- **Scene 04 · Moments by the Sea** — asymmetric interactive photo gallery.
+- **Scene 05 · Destination** — venue details and directions.
+- **Scene 06 · Forever Begins Here** — closing golden hour, countdown, and calendar download.
 
-Next.js App Router · React 19 · TypeScript · Tailwind CSS · GSAP ScrollTrigger · Lucide.
+Built with Next.js App Router, React 19, TypeScript, Tailwind and GSAP.
 
-## Start
+## Quick start
 
-```bash
+```powershell
+git clone https://github.com/Arrjack8847/Coastal-Romance-Essential.git
+cd Coastal-Romance-Essential
 npm install
 npm run dev
 ```
 
-Open http://localhost:3000 or, on another device connected to the same Wi-Fi, http://YOUR-LAPTOP-LAN-IP:3000.
+Laptop: http://localhost:3000
 
-```bash
-npm run typecheck
-npm run build
-```
+Mobile on same Wi-Fi: http://YOUR-LAPTOP-LAN-IP:3000
 
 ## Customize
 
-Edit **lib/wedding.ts** for names, date, times, location, directions, letter and image URLs. The included people and venue are fictional **demo content**, not a real invitation.
+All demo names, dates, venue and image URLs are in `lib/wedding.ts`. Update Open Graph metadata in `app/layout.tsx` for each client. The sample names, wedding and venue are **not real**.
 
-Replace demo photography with photos you have permission to publish, and update Open Graph metadata in **app/layout.tsx**. Stock photography currently uses Unsplash CDN URLs; see [Unsplash License](https://unsplash.com/license).
+Visual photographs currently use remote Unsplash URLs as temporary imagery; replace with client-approved or bespoke project assets before selling/publishing. See [Unsplash License](https://unsplash.com/license).
 
-## Motion and accessibility
+See `docs/CUSTOMIZATION.md` and `docs/SCROLL-ANIMATION.md`.
 
-- ScrollTrigger reveals and very light parallax (no scroll-jacking).
-- CSS wave layers use transform-only movement.
-- Reduced-motion preference disables decorative movement.
-- Keyboard-accessible gallery lightbox; Escape and arrow-key controls.
-- Full-viewport mobile layout with safe-area padding.
-- Native scroll, responsive images, focus styles and semantic sections.
+## Accessibility and performance
 
-## Package boundary
+Two separate scroll-triggered pinned scenes, with a natural-scroll invitation in the middle. Independent depth layers use transforms and opacity. Bubbles use deterministic CSS keyframes, not per-frame React rendering. Respect `prefers-reduced-motion` and provide a direct anchor past the opening animation.
 
-Essential template only: no guest database, stored RSVP form, personalized unique URLs, protected content, custom cinematic intro or premium interactive features. Countdown + add-to-calendar are included as demo standard add-ons.
+Do real-device testing before production launch, particularly iOS Safari and Android Chrome. The screenshot/scroll visuals are not proven by a successful build alone.
 
-Built for JackNex Studio · JN-W02.
+## Package
+
+Essential template only: no personalized guest URL, password protection, stored RSVP, or additional premium interactive features.
+
+Made with love · JackNex Studio.

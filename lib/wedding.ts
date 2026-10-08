@@ -32,8 +32,9 @@ export const wedding = {
     "Join us where the ocean meets the sky, surrounded by the people who make our story beautiful.",
   ],
   images: {
-    hero: image("photo-1580960551660-a700d2c95639", 2200),
-    ceremony: image("photo-1519741497674-611481863552", 1700),
+    hero: image("photo-1633981229700-e948099610ef", 2000),
+    underwater: image("photo-1679309075410-2e34cfe133ed", 2000),
+    ceremony: image("photo-1763129636673-df7c37cf251d", 1700),
     gallery: [
       {
         src: image("photo-1597427681188-3ef80f2631ff", 1100),

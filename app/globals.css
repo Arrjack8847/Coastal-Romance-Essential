@@ -34,273 +34,6 @@ main { width: 100%; overflow: visible; }
 .editorial-title em { font-weight: 400; }
 .wave-edge { position: absolute; height: 90px; width: 100%; left: 0; display: block; z-index: 2; pointer-events: none; }
 
-/* 01 — Coastal Romance cinematic hero: all motion is transform/opacity based. */
-.coast-chapter {
-  position: relative;
-  width: 100%;
-  min-height: 100svh;
-  isolation: isolate;
-}
-.coast-viewport {
-  position: relative;
-  width: 100%;
-  height: 100svh;
-  min-height: 620px;
-  isolation: isolate;
-  overflow: hidden;
-  background: #eacbb9;
-  text-align: center;
-}
-.coast-viewport > :not(.coast-copy):not(.coast-scroll-hint):not(.coast-scroll-track) { pointer-events: none; }
-.coast-sky {
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse 68% 38% at 80% 34%, #ffefc69e, transparent 74%),
-    linear-gradient(180deg, #d6b9c0 0%, #efcec7 16%, #f6d6c4 36%, #ffe4c3 51%, #eac4ad 70%, #9cb0ae 100%);
-}
-.coast-cloud {
-  position: absolute;
-  width: 96%;
-  height: 23%;
-  opacity: .7;
-  transform: translate3d(0,0,0);
-  background: radial-gradient(ellipse at 50% 50%, #fff7e7ad 0%, #fff5e53d 47%, transparent 76%);
-}
-.coast-cloud-one { top: 11%; left: -39%; }
-.coast-cloud-two { top: 32%; right: -42%; opacity: .63; }
-.coast-sun {
-  position: absolute;
-  z-index: 1;
-  width: min(70vw, 620px);
-  aspect-ratio: 1;
-  right: -14%;
-  top: 32%;
-  border-radius: 50%;
-  background: radial-gradient(circle, #fff7d9e8 0 10%, #fff0cacc 13%, #fce0b277 24%, #f8d5b63b 39%, transparent 70%);
-  transform: translate3d(0,0,0);
-}
-.coast-ocean-far {
-  position: absolute;
-  z-index: 2;
-  width: 110%;
-  left: -5%;
-  bottom: -9%;
-  height: 65%;
-  overflow: hidden;
-  transform-origin: 50% 55%;
-  -webkit-mask-image: linear-gradient(180deg, transparent, #000 31%, #000 100%);
-  mask-image: linear-gradient(180deg, transparent, #000 31%, #000 100%);
-}
-.coast-ocean-photo {
-  object-fit: cover;
-  object-position: center 45%;
-  filter: sepia(.12) saturate(.72) brightness(1.06);
-}
-.coast-horizon-light {
-  position: absolute;
-  z-index: 3;
-  left: 0;
-  right: 0;
-  top: 46%;
-  height: 19%;
-  background: linear-gradient(180deg, transparent, #fff0d728 39%, #ffe9c43a 65%, transparent);
-}
-.coast-ocean-middle,
-.coast-ocean-near {
-  position: absolute;
-  left: -10%;
-  width: 120%;
-  overflow: visible;
-  transform-origin: 50% 60%;
-}
-.coast-ocean-middle { z-index: 4; bottom: -7%; height: 45%; }
-.coast-ocean-near { z-index: 6; bottom: -13%; height: 40%; }
-.coast-ocean-middle svg,
-.coast-ocean-near svg { width: 100%; height: 100%; display: block; }
-.coast-ocean-middle svg { animation: coast-breathe 9s ease-in-out infinite alternate; }
-.coast-ocean-near svg { animation: coast-breathe-reverse 12s ease-in-out infinite alternate; }
-.coast-water-shimmer {
-  position: absolute;
-  z-index: 5;
-  bottom: 3%;
-  width: 100%;
-  height: 28%;
-  opacity: .42;
-  background:
-    linear-gradient(105deg, transparent 11%, #fff8e338 17%, transparent 21%),
-    linear-gradient(83deg, transparent 40%, #fff3d83b 48%, transparent 52%),
-    linear-gradient(115deg, transparent 67%, #f6e9d23a 72%, transparent 76%);
-}
-.coast-sand {
-  position: absolute;
-  z-index: 7;
-  left: -4%;
-  width: 108%;
-  bottom: -7%;
-  height: 20%;
-  background:
-    radial-gradient(ellipse 90% 50% at 36% 26%, #fff8e1cc, transparent 85%),
-    linear-gradient(180deg, #e6d3baaa, #eddbc4 55%, #e2c6a6 100%);
-  clip-path: polygon(0 43%, 9% 36%, 19% 30%, 30% 33%, 42% 39%, 55% 35%, 69% 25%, 82% 32%, 94% 36%, 100% 32%, 100% 100%, 0 100%);
-}
-.coast-grass {
-  position: absolute;
-  z-index: 8;
-  bottom: -19px;
-  width: clamp(118px,16vw,230px);
-  height: auto;
-  color: #ab937b;
-  opacity: .78;
-  transform-origin: bottom center;
-}
-.coast-grass-left { left: -21px; }
-.coast-grass-right { right: -30px; transform: scaleX(-1); opacity: .58; }
-.coast-vignette {
-  position: absolute;
-  z-index: 9;
-  inset: 0;
-  opacity: .42;
-  background: linear-gradient(90deg,#6d7a7520,transparent 18%,transparent 82%,#98776623), linear-gradient(180deg,#e6b9b218,transparent 19%,transparent 79%,#a57e592b);
-}
-.coast-copy {
-  position: absolute;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: clamp(76px, 11svh, 148px);
-  padding: 0 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #31555d;
-  transform-origin: 50% 30%;
-}
-.coast-eyebrow {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 11px;
-  color: #6b7772;
-  font-size: clamp(8px, 1vw, 10px);
-  font-weight: 500;
-  letter-spacing: .3em;
-  line-height: 1.5;
-}
-.coast-eyebrow svg { color: #ad9378; }
-.coast-heading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: clamp(28px, 5svh, 62px) 0 0;
-  font: 400 clamp(6rem, 16vw, 11rem)/.71 var(--serif);
-  letter-spacing: -.059em;
-  text-shadow: 0 2px 35px #ffeacc66;
-}
-.coast-heading > span { display: block; }
-.coast-name { white-space: nowrap; }
-.coast-ampersand {
-  font-size: .42em;
-  font-style: italic;
-  color: #a37a67;
-  letter-spacing: -.02em;
-  line-height: 1.23;
-  padding: .08em 0;
-}
-.coast-vow-line {
-  margin: clamp(24px, 5svh, 58px) 0 0;
-  font: italic 400 clamp(19px, 2.5vw, 27px)/1.2 var(--serif);
-  color: #3c5d60;
-}
-.coast-event-line {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  margin-top: 19px;
-  font-size: 10px;
-  letter-spacing: .21em;
-  line-height: 1.55;
-  text-transform: uppercase;
-  color: #3a5a60;
-}
-.coast-divider { display: block; width: 66px; height: 1px; margin-bottom: 9px; background: #987e6e; opacity: .7; }
-.coast-scroll-hint {
-  position: absolute;
-  z-index: 14;
-  left: 50%;
-  bottom: max(23px, calc(env(safe-area-inset-bottom) + 18px));
-  transform: translateX(-50%);
-  color: #355d65;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 12px;
-  text-decoration: none;
-  white-space: nowrap;
-}
-.coast-scroll-hint span { font-size: 9px; font-weight: 500; letter-spacing: .27em; }
-.coast-scroll-hint svg { animation: coast-hint-bob 2.5s ease-in-out infinite; }
-.coast-scroll-track { position: absolute; z-index: 15; top: 45%; right: 18px; width: 1px; height: 78px; background: #376a6d36; }
-.coast-progress-fill { width: 100%; height: 100%; display: block; background: #355d65ac; transform: scaleY(0); transform-origin: top center; }
-.coast-ivory-wipe {
-  position: absolute;
-  z-index: 20;
-  inset: 0;
-  background: #faf4e9;
-  transform: translate3d(0,125%,0);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.coast-wipe-crest { position: absolute; bottom: calc(100% - 1px); left: 0; width: 100%; height: 112px; }
-.coast-wipe-message { display: flex; align-items: center; flex-direction: column; gap: 18px; padding: 30px; }
-.coast-wipe-message span { color: #a58a74; font-size: 9px; letter-spacing: .32em; }
-.coast-wipe-message p { color: #355d65; font: italic 400 clamp(2.5rem, 7vw, 5rem)/1.08 var(--serif); margin: 0; max-width: 450px; }
-@keyframes coast-breathe { to { transform: translate3d(1.3%,3px,0); } }
-@keyframes coast-breathe-reverse { to { transform: translate3d(-1.1%,4px,0); } }
-@keyframes coast-hint-bob { 50% { transform: translateY(7px); } }
-
-/* Desktop keeps a wider sky-to-ocean composition; pin distance is responsive. */
-@media (min-width: 768px) {
-  .coast-copy { top: clamp(62px, 10svh, 145px); }
-  .coast-heading { margin-top: clamp(19px, 4svh, 48px); line-height: .66; }
-  .coast-vow-line { margin-top: 4svh; }
-  .coast-ocean-far { height: 58%; }
-  .coast-ocean-middle { height: 44%; }
-  .coast-ocean-near { height: 41%; }
-  .coast-scroll-track { right: 38px; }
-}
-@media (max-width: 430px) {
-  .coast-copy { top: clamp(66px, 10.5svh, 102px); }
-  .coast-heading { font-size: clamp(5.7rem, 24vw, 7.15rem); margin-top: clamp(28px, 5.2svh, 50px); }
-  .coast-vow-line { margin-top: clamp(22px, 4svh, 43px); font-size: 20px; }
-  .coast-event-line { margin-top: 15px; gap: 7px; font-size: 9px; }
-  .coast-ocean-far { height: 62%; bottom: -7%; }
-  .coast-ocean-middle { height: 42%; bottom: -7%; }
-  .coast-ocean-near { height: 36%; bottom: -12%; }
-  .coast-grass { width: 126px; }
-  .coast-grass-left { left: -35px; }
-  .coast-grass-right { right: -39px; }
-  .coast-sun { width: 91vw; right: -30%; top: 34%; }
-  .coast-scroll-track { right: 11px; opacity: .6; }
-}
-@media (max-width: 360px), (max-height: 650px) {
-  .coast-viewport { min-height: 570px; }
-  .coast-heading { font-size: clamp(5.25rem, 23vw, 6rem); margin-top: 23px; }
-  .coast-copy { top: 56px; }
-  .coast-vow-line { margin-top: 22px; font-size: 18px; }
-  .coast-event-line { margin-top: 11px; gap: 6px; }
-  .coast-scroll-hint { bottom: max(12px, env(safe-area-inset-bottom)); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .coast-ocean-middle svg, .coast-ocean-near svg, .coast-scroll-hint svg { animation: none !important; }
-  .coast-scroll-track { display: none; }
-  .coast-ivory-wipe { display: none; }
-}
-
 /* 02 — A letter on ivory paper, never in a rectangular card */
 .letter-section { position: relative; min-height: 790px; display: flex; justify-content: center; align-items: center; isolation: isolate; z-index: 4; background: var(--pearl); text-align: center; overflow: visible; }
 .letter-edge { top: -87px; color: var(--pearl); }
@@ -536,4 +269,256 @@ main { width: 100%; overflow: visible; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+/* ============================================================
+  JN-W02 · LOVE BENEATH THE WAVES
+  A cinematic ocean dive, readable underwater invitation, return to land.
+  GPU-friendly scroll motion; accessible reduced-motion fallbacks.
+============================================================ */
+.dive-chapter, .resurface-chapter { position: relative; isolation: isolate; width: 100%; }
+.dive-viewport, .resurface-viewport {
+  position: relative; isolation: isolate; width: 100%; height: 100svh; min-height: 590px;
+  overflow: hidden; background: #254e60;
+}
+.dive-viewport > *, .resurface-viewport > * { -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.dive-sky {
+  position: absolute; inset: -5%; z-index: 0;
+  background: radial-gradient(ellipse 44% 28% at 72% 40%, #fff3cfaa,transparent 90%),
+    linear-gradient(180deg,#d9b1b3 0%,#f2c9bc 28%,#ffe6c5 53%,#eac1a5 71%,#a4afb0 100%);
+}
+.dive-glow {
+  position: absolute; z-index: 1; top: 30%; right: -12%; width: min(80vw,570px); aspect-ratio:1;
+  background: radial-gradient(circle,#fff6d9da 0 12%,#fff2cea1 18%,#fce2b466 32%,transparent 69%);
+  border-radius: 50%;
+}
+.dive-ocean-photo {
+  position: absolute; z-index: 2; left: -8%; width: 116%; bottom: -5%; height: 64%;
+  -webkit-mask-image: linear-gradient(180deg,transparent 0%,#000a 24%,#000 44%);
+  mask-image: linear-gradient(180deg,transparent 0%,#000a 24%,#000 44%);
+  transform-origin: 50% 72%;
+}
+.dive-background-image, .resurface-background-image { object-fit:cover; object-position: center 48%; }
+.dive-ocean-photo .dive-background-image { filter: sepia(.07) saturate(.77) brightness(1.12); object-position: center 45%; }
+.dive-horizon-light { position:absolute; z-index:3; top:46%; height:17%; left:0; width:100%; background: linear-gradient(180deg, transparent,#ffe2bc4a 55%,transparent); }
+.dive-water-front {
+  position:absolute; z-index:4; bottom:-12%; left:-7%; width:114%; height:35%;
+  transform-origin:50% 70%; opacity:.75; pointer-events:none;
+}
+.dive-water-front svg { display:block; height:100%; width:100%; animation: current-water 11s ease-in-out infinite alternate; }
+.dive-film { position:absolute; z-index:5; inset:0; pointer-events:none; background:linear-gradient(90deg,#815c5721,transparent 22%,transparent 78%,#7b6b6822); }
+.dive-copy {
+  position:absolute; z-index:8; top:clamp(65px,11svh,145px); left:0; width:100%;
+  text-align:center; display:flex; flex-direction:column; align-items:center; padding:0 18px;
+  color:#335960; text-shadow:0 2px 15px #ffecd347;
+}
+.dive-kicker { margin:0; font-size:clamp(8px,1vw,10px); font-weight:600; letter-spacing:.33em; line-height:1.8; }
+.dive-names {
+  display:flex; flex-direction:column; align-items:center;
+  margin:clamp(30px,5.5svh,64px) 0 0;
+  font:400 clamp(6.1rem,16vw,11rem)/.67 var(--serif); letter-spacing:-.052em;
+}
+.dive-names > span { display:block; white-space:nowrap; }
+.dive-names .dive-and { color:#a67c68; font-size:.45em; font-style:italic; line-height:1.18; padding:.09em 0 .1em; }
+.dive-tagline { font:italic 400 clamp(19px,2.6vw,27px)/1.3 var(--serif); margin:clamp(30px,5.6svh,60px) 0 0; }
+.dive-event { margin-top:20px; display:flex; flex-direction:column; align-items:center; gap:8px; font-size:10px; letter-spacing:.22em; text-transform:uppercase; }
+.dive-hairline { width:70px; height:1px; background:#958073; margin-bottom:8px; }
+.dive-scroll { position:absolute; left:50%; bottom:max(31px,calc(21px + env(safe-area-inset-bottom))); transform:translateX(-50%); z-index:11; display:flex; flex-direction:column; align-items:center; gap:10px; color:#345b60; text-decoration:none; white-space:nowrap; font-size:9px; letter-spacing:.26em; }
+.dive-scroll svg { animation: dive-bob 2.5s ease-in-out infinite; }
+
+/* The actual surface: a full underwater image with a scalloped top boundary. */
+.dive-underwater {
+  position:absolute; z-index:12; inset:0; overflow:visible; background:#2d7a88;
+  transform:translate3d(0,110%,0); pointer-events:none;
+}
+.dive-underwater-photo { position:absolute; inset:-6%; transform-origin:50% 24%; }
+.dive-underwater-photo .dive-background-image { object-position:center 20%; filter:saturate(1.08) brightness(.85); }
+.dive-underwater-filter {
+  position:absolute; inset:0; background:linear-gradient(180deg,#98d2d52e 0%,#1263774b 27%,#123e55c2 100%);
+}
+.dive-waterline {
+  position:absolute; left:0; bottom:calc(100% - 2px); height:clamp(66px,11svh,130px); width:100%;
+  filter:drop-shadow(0 -9px 12px #e3f4e954);
+}
+.dive-depth { position:absolute; inset:0; background:linear-gradient(180deg,transparent 5%,#032d46ad 100%); }
+.dive-next { position:absolute; left:12%; right:12%; bottom:20%; z-index:3; text-align:center; color:#f6efe1; }
+.subsea-kicker { font:500 10px/1.8 var(--sans); letter-spacing:.31em; color:#c9e8df; }
+.dive-next p { font:italic 400 clamp(2.4rem,6vw,5rem)/1.02 var(--serif); max-width:470px; margin:20px auto 15px; }
+.dive-next-arrow { display:block; font-size:20px; opacity:.72; }
+
+/* Reusable underwater depth details. Kept separate from text for clarity. */
+.ocean-light-beams { position:absolute; inset:0; overflow:hidden; pointer-events:none; opacity:.8; }
+.ocean-light-beams span {
+  position:absolute; top:-17%; left:30%; width:23%; height:95%;
+  transform-origin:top center;
+  background:linear-gradient(180deg,#d7f3d15c,#b9ebe21a 49%,transparent 100%);
+  clip-path:polygon(30% 0,60% 0,100% 100%,0 100%);
+  mix-blend-mode:screen;
+  filter:blur(13px);
+  animation: beams-drift 12s ease-in-out infinite alternate;
+}
+.ocean-light-beams span:nth-child(2) { left:47%; width:18%; opacity:.5; transform:rotate(18deg); animation-delay:-5s; }
+.ocean-light-beams span:nth-child(3) { left:6%; width:17%; opacity:.42; transform:rotate(-15deg); animation-delay:-8s; }
+.ocean-light-beams span:nth-child(4) { left:76%; width:12%; opacity:.38; transform:rotate(24deg); animation-delay:-4s; }
+.ocean-particles { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.ocean-bubble {
+  position:absolute; bottom:-32px; display:block; border-radius:50%;
+  border:1px solid #efffffad;
+  box-shadow:inset -2px -1px 4px #9acdd45e, 0 0 5px #c4ece733;
+  background:radial-gradient(circle at 29% 23%,#ffffff8a 0 7%,transparent 40%);
+  will-change:transform;
+  animation: bubble-rise linear infinite;
+}
+@keyframes bubble-rise {
+  from { transform:translate3d(-4px,0,0) scale(.9); }
+  45% { transform:translate3d(11px,-55vh,0) scale(1.05); }
+  to { transform:translate3d(-8px,-115vh,0) scale(.75); }
+}
+@keyframes beams-drift { to { transform:translateX(20%) rotate(5deg); opacity:.48; } }
+@keyframes current-water { to { transform:translate3d(2%,7px,0); } }
+@keyframes dive-bob { 50% { transform:translateY(7px); } }
+
+/* 02 — An unhurried, legible invitation found on the seafloor. */
+.uw-section {
+  position:relative; min-height:110svh; isolation:isolate; overflow:hidden;
+  padding:clamp(94px,12svh,150px) 24px clamp(110px,14svh,160px);
+  background:#133f53; color:#fbf4e7;
+}
+.uw-background { position:absolute; inset:0; z-index:-5; }
+.uw-photo { object-fit:cover; object-position: center top; filter:saturate(.94) brightness(.63); }
+.uw-color {
+  position:absolute; inset:0; z-index:-4; pointer-events:none;
+  background:linear-gradient(180deg,#164f61b5 0%,#082f48d5 57%,#04263cfa 100%);
+}
+.uw-section > .ocean-light-beams { z-index:-3; opacity:.46; }
+.uw-bubbles { z-index:-1; opacity:.55; }
+.uw-inner { position:relative; max-width:660px; width:100%; margin:0 auto; text-align:center; }
+.uw-intro { margin:0 auto 74px; max-width:600px; }
+.uw-intro h2 {
+  margin:23px 0 17px; color:#fff5df;
+  font:400 clamp(3.9rem,9vw,7.4rem)/.92 var(--serif);
+  letter-spacing:-.036em;
+}
+.uw-intro h2 em { font-weight:400; }
+.uw-intro > p { margin:0 auto; color:#cbe0db; font:italic 400 24px/1.3 var(--serif); }
+.uw-letter {
+  position:relative; max-width:530px; margin:0 auto;
+  padding:10px; border:1px solid #f4e7cd85;
+  background:#f6ede09e;
+  box-shadow:0 25px 90px #021d2b8c,0 0 80px #9dd9d21a;
+}
+.uw-letter::before, .uw-letter::after {
+  content:""; position:absolute; pointer-events:none; inset:-11px;
+  border:1px solid #e3d7bc50;
+}
+.uw-letter::after { inset:-18px; border-color:#dcece62a; animation:letter-buoyancy 7s ease-in-out infinite alternate; }
+.uw-letter-inner {
+  min-height:560px; padding:clamp(37px,6vw,65px) clamp(17px,5vw,62px) 44px;
+  border:1px solid #c4ab86a8;
+  background: radial-gradient(ellipse at 50% 0%,#fffbf0 0%,#f9f3e7 44%,#f0e3ce 100%);
+  color:#355d65;
+}
+.uw-card-eyebrow { margin:0; font-size:9px; font-weight:500; letter-spacing:.23em; color:#987e68; }
+.uw-ornament { display:block; width:120px; max-width:100%; margin:23px auto; color:#bba083; }
+.uw-letter-inner h3 { display:flex; flex-direction:column; align-items:center; gap:0; margin:8px auto 24px; font:italic 400 clamp(3.4rem,8vw,5.2rem)/.81 var(--serif); letter-spacing:-.02em; }
+.uw-letter-inner h3 span { color:#a27b66; font-size:.6em; line-height:1.1; }
+.uw-card-declaration { font:italic 400 23px/1.23 var(--serif); max-width:315px; margin:0 auto 20px; }
+.uw-card-rule { width:72px; height:1px; background:#bba68c; margin:20px auto; }
+.uw-card-date { display:block; font:400 clamp(29px,5vw,38px)/1 var(--serif); }
+.uw-card-place { color:#8b7669; font-size:10px; margin:12px 0; letter-spacing:.22em; text-transform:uppercase; }
+.uw-card-letter { font:400 12px/2 var(--sans); color:#587075; max-width:340px; margin:19px auto 0; }
+.uw-card-letter p { margin:0 0 13px; }
+.uw-card-signoff { font:italic 400 23px/1.1 var(--serif); color:#967762; margin:22px auto 0; }
+.uw-card-signoff em { display:block; font-size:1.45em; margin-top:9px; }
+.uw-outro { margin:85px auto 0; text-align:center; }
+.uw-outro p { font:italic 400 clamp(30px,5vw,44px)/1.2 var(--serif); margin:0 0 24px; }
+.uw-outro span { display:block; color:#acc9c9; font-size:9px; letter-spacing:.21em; }
+.uw-outro svg { display:block; height:25px; width:18px; color:#c6e4de; transform:rotate(180deg); margin:23px auto 0; }
+@keyframes letter-buoyancy { to { transform:translate3d(0,-6px,0); } }
+
+/* 03 — Look upward; pass through the surface and reveal the ceremony. */
+.resurface-viewport { background:#083d51; }
+.resurface-blue-photo { position:absolute; inset:-7%; z-index:0; }
+.resurface-blue-photo .resurface-background-image { object-position:center 20%; filter:saturate(.94) brightness(.73); }
+.resurface-blue-tint { position:absolute; inset:0; z-index:1; background:linear-gradient(180deg,#9fd8d633,transparent 45%,#042d4baf); }
+.resurface-viewport > .ocean-light-beams { z-index:2; }
+.resurface-bubbles { z-index:3; opacity:.6; }
+.resurface-light { position:absolute; z-index:4; top:-29%; left:-10%; width:120%; height:100%; background:radial-gradient(ellipse at 50% 0%,#ffffe9e0,transparent 65%); }
+.resurface-air { position:absolute; inset:0; z-index:5; background:#e5c7ac; transform:translate3d(0,-112%,0); }
+.resurface-air-photo { position:absolute; inset:-5%; }
+.resurface-air-photo .resurface-background-image { object-position:50% 48%; filter:saturate(.87) sepia(.10) brightness(.95); }
+.resurface-sunset-tint {
+  position:absolute; inset:0;
+  background:linear-gradient(180deg,#e9c4b650 0%,#e8b39b40 39%,#553b385c 100%),
+    radial-gradient(ellipse 72% 52% at 80% 23%,#ffe9c17a,transparent);
+}
+.resurface-greeting { position:absolute; z-index:7; bottom:clamp(125px,19svh,240px); left:20px; right:20px; color:#fff9e8; text-align:center; text-shadow:0 3px 25px #102e3c8f; }
+.resurface-kicker { font-size:10px; letter-spacing:.28em; font-weight:600; }
+.resurface-greeting h2 { font:400 clamp(5rem,12vw,10rem)/.78 var(--serif); margin:25px auto 28px; }
+.resurface-greeting h2 em { font-weight:400; }
+.resurface-greeting p { margin:0; font:italic 400 clamp(22px,3vw,33px)/1.3 var(--serif); }
+.resurface-scroll { display:block; margin-top:48px; font-size:9px; letter-spacing:.27em; }
+.ocean-waterline.resurface-surface-edge {
+  position:absolute; top:calc(100% - 2px); left:0; width:100%; height:clamp(65px,12svh,132px);
+  transform:rotate(180deg); filter:drop-shadow(0 5px 14px #daf7f48c);
+}
+
+/* Ceremony content is the chapter after surfacing; do not repeat the photo. */
+.celebration-section {
+  position:relative; z-index:1; display:flex; align-items:center; justify-content:center;
+  min-height:unset; margin-top:-34px;
+  border-radius:52% 52% 0 0 / 34px 34px 0 0;
+}
+.celebration-info { width:min(100%,690px); min-height:680px; }
+
+/* Phones: keep the invitation safely in the viewport, no huge fixed video. */
+@media (max-width:760px) {
+  .dive-names { font-size:clamp(6rem,24vw,9.5rem); }
+  .dive-copy { top:clamp(76px,11svh,115px); }
+  .dive-ocean-photo { height:59%; }
+  .dive-glow { width:85vw; right:-27%; top:37%; }
+  .dive-water-front { bottom:-10%; height:29%; }
+  .uw-section { padding:98px 20px 120px; }
+  .uw-intro { margin-bottom:64px; }
+  .uw-intro h2 { font-size:clamp(3.8rem,12vw,5.5rem); }
+  .uw-letter { width:min(100%,480px); }
+  .uw-card-declaration { font-size:21px; }
+  .resurface-greeting h2 { font-size:clamp(5.2rem,14vw,8rem); }
+  .celebration-section { margin-top:-25px; border-radius:52% 52% 0 0 / 25px 25px 0 0; }
+}
+@media (max-width:430px) {
+  .dive-viewport, .resurface-viewport { min-height:600px; }
+  .dive-copy { top:clamp(73px,10svh,105px); }
+  .dive-names { font-size:clamp(5.7rem,24vw,7.25rem); margin-top:clamp(32px,5.1svh,53px); }
+  .dive-names .dive-and { padding:.04em 0; }
+  .dive-tagline { margin-top:clamp(24px,5svh,48px); font-size:21px; }
+  .dive-event { margin-top:14px; font-size:9px; }
+  .dive-next { bottom:25%; }
+  .dive-next p { font-size:3.1rem; }
+  .uw-intro h2 { font-size:clamp(3.6rem,13.2vw,5.1rem); }
+  .uw-intro > p { font-size:20px; }
+  .uw-letter-inner { padding:40px 20px; min-height:0; }
+  .uw-letter-inner h3 { font-size:3.7rem; }
+  .uw-card-letter { font-size:11px; }
+  .resurface-greeting { bottom:23%; }
+  .resurface-greeting h2 { font-size:5.5rem; }
+  .resurface-kicker { font-size:9px; }
+  .resurface-greeting p { font-size:24px; }
+}
+@media (max-width:360px), (max-height:630px) {
+  .dive-viewport, .resurface-viewport { min-height:565px; }
+  .dive-copy { top:59px; }
+  .dive-names { font-size:5.4rem; margin-top:22px; }
+  .dive-tagline { font-size:19px; margin-top:20px; }
+  .dive-event { margin-top:10px; }
+  .dive-scroll { bottom:max(15px,env(safe-area-inset-bottom)); }
+  .uw-intro h2 { font-size:3.55rem; }
+  .resurface-greeting h2 { font-size:4.7rem; }
+  .resurface-scroll { margin-top:27px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dive-water-front svg, .dive-scroll svg, .ocean-bubble, .ocean-light-beams span, .uw-letter { animation:none !important; }
+  .dive-underwater { display:none; }
+  .resurface-air { transform:none !important; }
+  .resurface-viewport > .ocean-light-beams, .resurface-bubbles { display:none; }
 }
