@@ -1,0 +1,309 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --pearl: #faf4e9;
+  --paper: #f8f0e5;
+  --sand: #ead8c1;
+  --peach: #e2b89e;
+  --gold: #b69a7a;
+  --teal: #355d65;
+  --teal-soft: #55777a;
+  --text: #49666a;
+  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --sans: "DM Sans", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--pearl); color: var(--teal); font-family: var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+body, button, a { -webkit-tap-highlight-color: transparent; }
+button, a { touch-action: manipulation; }
+button { font: inherit; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid #7da2a6; outline-offset: 5px; }
+::selection { background: #d9ba9c; color: #24474b; }
+main { width: 100%; overflow: clip; }
+.image-cover { object-fit: cover; }
+.section-padding { padding: 130px 28px; }
+.eyebrow { margin: 0; font: 500 10px/1.8 var(--sans); letter-spacing: .32em; text-transform: uppercase; color: #957b66; }
+.eyebrow-small { font-size: 9px; letter-spacing: .23em; }
+.flourish { width: 118px; height: 17px; color: #ad9072; display: block; margin: 17px auto 0; opacity: .86; }
+.flourish-light { color: #fff9e7; }
+.editorial-title { margin: 0; color: var(--teal); font: 400 clamp(3.5rem, 7vw, 6.8rem)/.94 var(--serif); letter-spacing: -.045em; }
+.editorial-title em { font-weight: 400; }
+.wave-edge { position: absolute; height: 90px; width: 100%; left: 0; display: block; z-index: 2; pointer-events: none; }
+
+/* 01 — Golden hour. Real photographic water sits beneath independently moving layers. */
+.hero { position: relative; width: 100%; height: 100svh; min-height: 620px; isolation: isolate; overflow: hidden; text-align: center; background: #e6c3b1; }
+.hero-sky { position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg,#d8bbbc 0%,#efd3c8 19%,#fbe9d7 44%,#f4cba9 65%,#dbb3a0 84%,#d5b6ad 100%); }
+.hero-sky::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 46% 21% at 13% 25%,#fff9ec85,transparent 100%),radial-gradient(ellipse 67% 23% at 85% 37%,#fff3d38c,transparent 100%),linear-gradient(100deg,#f4dcc01b,transparent 36%,#fee8c245 70%,transparent); opacity: .88; }
+.hero-sun { position: absolute; z-index: 1; top: 36%; right: 6%; width: min(56vw,420px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle,rgba(255,247,217,.94) 0 12%,rgba(255,230,194,.64) 17%,rgba(255,215,174,.22) 35%,transparent 71%); filter: blur(4px); pointer-events: none; }
+.hero-sea-image { position: absolute; z-index: 1; left: -3%; right: -3%; height: 57%; bottom: -4%; opacity: .83; transform: translateZ(0); -webkit-mask-image: linear-gradient(to bottom,transparent 0%,#0009 22%,#000 46%,#000 100%); mask-image: linear-gradient(to bottom,transparent 0%,#0009 22%,#000 46%,#000 100%); }
+.hero-sea-image .hero-image { object-position: 50% 38%; filter: saturate(.68) sepia(.12) brightness(1.07); }
+.hero-horizon-haze { position: absolute; z-index: 2; top: 48%; width: 100%; height: 17%; background: linear-gradient(180deg,#ffe4c540,transparent 54%,#ffe6c525); pointer-events: none; }
+.ocean-layers { position: absolute; z-index: 3; left: 0; right: 0; bottom: -2px; height: 23%; overflow: hidden; pointer-events: none; }
+.ocean-wave { position: absolute; left: -11%; width: 122%; height: 100%; transform: translate3d(0,0,0); will-change: transform; }
+.ocean-wave-back { color: #7fadb2; opacity: .26; bottom: 29%; animation: sea-drift-one 14s ease-in-out infinite alternate; }
+.ocean-wave-middle { color: #86aba8; opacity: .32; bottom: 14%; animation: sea-drift-two 18s ease-in-out infinite alternate; }
+.ocean-wave-front { color: #ead7c1; opacity: .69; bottom: -32%; animation: sea-drift-one 12s ease-in-out infinite alternate-reverse; }
+.hero-grass { position: absolute; z-index: 4; bottom: -18px; width: clamp(96px,17vw,210px); height: auto; color: #ae997f; opacity: .73; transform-origin: bottom center; pointer-events: none; }
+.hero-grass-left { left: -22px; animation: grass-sway 8s ease-in-out infinite alternate; }
+.hero-grass-right { right: -22px; transform: scaleX(-1); animation: grass-sway-reverse 9s ease-in-out infinite alternate; opacity: .59; }
+.film-grain { position: absolute; inset: 0; z-index: 4; pointer-events: none; opacity: .19; background-image: repeating-linear-gradient(115deg,transparent 0 3px,#fff6ee08 4px 5px,transparent 6px 10px), repeating-linear-gradient(25deg,transparent 0 6px,#694b3a08 7px 8px,transparent 9px 13px); mix-blend-mode: multiply; }
+.hero-copy { position: absolute; z-index: 5; top: clamp(78px,13svh,165px); left: 0; width: 100%; padding: 0 20px; display: flex; align-items: center; flex-direction: column; color: var(--teal); }
+.hero-topline .eyebrow { color: #516e71; font-size: 9px; letter-spacing: .33em; }
+.hero-topline .flourish { margin-top: 13px; }
+.hero-title { margin: clamp(29px,5svh,60px) 0 0; color: #31545d; font: 400 clamp(6.1rem,15vw,11.7rem)/.67 var(--serif); letter-spacing: -.06em; text-shadow: 0 1px 19px #ffe4cc3a; }
+.hero-title span, .hero-title em { display: block; }
+.hero-title em { font: italic 400 .42em/1.1 var(--serif); margin: .12em 0 .14em; letter-spacing: 0; color: #a87b68; }
+.hero-details { margin-top: clamp(38px,6.7svh,72px); display: flex; align-items: center; flex-direction: column; gap: 13px; }
+.hero-tagline { margin: 0; color: #3f6265; font: italic 400 clamp(18px,2.5vw,25px)/1.4 var(--serif); }
+.fine-rule { height: 1px; width: 68px; background: #9f8b78; opacity: .67; margin: 3px 0; }
+.hero-details time { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; }
+.hero-location { margin: 0; font-size: 10px; letter-spacing: .25em; text-transform: uppercase; }
+.hero-scroll { position: absolute; z-index: 6; bottom: max(31px,calc(env(safe-area-inset-bottom) + 18px)); left: 50%; transform: translateX(-50%); display: flex; align-items: center; flex-direction: column; gap: 12px; color: #375d64; text-decoration: none; white-space: nowrap; }
+.hero-scroll span { font-size: 9px; letter-spacing: .3em; }
+.hero-scroll svg { animation: discover-bob 2.8s ease-in-out infinite; }
+@keyframes sea-drift-one { to { transform: translate3d(3.5%,3px,0); } }
+@keyframes sea-drift-two { to { transform: translate3d(-3%,5px,0); } }
+@keyframes grass-sway { to { transform: rotate(2.5deg); } }
+@keyframes grass-sway-reverse { to { transform: scaleX(-1) rotate(-2.5deg); } }
+@keyframes discover-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
+
+/* 02 — A letter on ivory paper, never in a rectangular card */
+.letter-section { position: relative; min-height: 790px; display: flex; justify-content: center; align-items: center; isolation: isolate; z-index: 4; background: var(--pearl); text-align: center; overflow: visible; }
+.letter-edge { top: -87px; color: var(--pearl); }
+.letter-section::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .74; background: radial-gradient(ellipse 39% 43% at 0% 27%,#e9d4c68c,transparent),radial-gradient(ellipse 35% 37% at 100% 80%,#e3dcd077,transparent); pointer-events: none; }
+.letter-wash { position: absolute; width: 300px; height: 500px; border: 1px solid #d4c3aa38; border-radius: 51% 49% 48% 52% / 41% 47% 53% 59%; pointer-events: none; }
+.letter-wash-left { top: 17%; left: -223px; transform: rotate(-28deg); }
+.letter-wash-right { bottom: 3%; right: -235px; transform: rotate(23deg); }
+.letter-content { width: 100%; max-width: 680px; margin: 0 auto; }
+.section-heading .flourish { margin-top: 16px; }
+.letter-prelude { font: italic 400 clamp(22px,3vw,29px)/1.3 var(--serif); color: #a18a76; margin: 64px 0 19px; }
+.letter-title { font-size: clamp(4.3rem,9.2vw,7.5rem); }
+.letter-body { max-width: 510px; margin: 41px auto 0; color: var(--text); font-size: 14px; line-height: 2.15; letter-spacing: .018em; }
+.letter-body p { margin: 0 0 21px; }
+.signature { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: 41px; }
+.signature span { color: #8a897a; font: italic 400 23px var(--serif); }
+.signature strong { font: italic 400 43px/.95 var(--serif); color: #906f5c; }
+.letter-footnote { display: flex; gap: 13px; align-items: center; justify-content: center; margin-top: 74px; font-size: 8px; letter-spacing: .23em; color: #9c8b77; }
+.letter-footnote-line { width: 33px; height: 1px; background: #c8b9a7; }
+
+/* 03 — Ceremony photo + editorial date */
+.celebration-section { position: relative; background: #f1e1cf; display: grid; grid-template-columns: minmax(0,1.08fr) minmax(0,.92fr); align-items: stretch; min-height: 790px; }
+.celebration-photo { position: relative; min-height: 720px; overflow: hidden; background: #bfaf9e; }
+.celebration-photo img { object-position: center center; }
+.celebration-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg,#432f220d,transparent 53%,#362e2940); pointer-events: none; }
+.photo-fade { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg,transparent 76%,#f1e1cf26); }
+.photo-label { position: absolute; z-index: 2; left: 7%; bottom: 8%; color: #fff6e9; font: 500 10px var(--sans); letter-spacing: .26em; text-shadow: 0 2px 12px #1d323a; }
+.celebration-info { display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding: 90px clamp(30px,6vw,90px); }
+.celebration-info .editorial-title { font-size: clamp(3.8rem,6vw,6.4rem); margin-top: 15px; }
+.celebration-info .flourish { margin-top: 22px; }
+.date-feature { display: flex; justify-content: center; align-items: center; gap: 21px; width: 100%; margin: 53px auto 35px; border-top: 1px solid #cbb69b; border-bottom: 1px solid #cbb69b; padding: 23px 5px; }
+.date-feature strong { font: 400 clamp(6rem,10vw,9.5rem)/.75 var(--serif); letter-spacing: -.055em; }
+.date-feature div { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.date-feature div span:first-child { font: 400 clamp(1.9rem,3vw,2.9rem)/1 var(--serif); }
+.date-feature div span:last-child { color: #8e816f; font-size: 10px; letter-spacing: .11em; text-transform: uppercase; white-space: nowrap; }
+.event-schedule { display: grid; width: 100%; max-width: 440px; grid-template-columns: 1fr 1fr; }
+.schedule-item { padding: 8px 6px; }
+.schedule-item + .schedule-item { border-left: 1px solid #c6b3a0; }
+.schedule-item p { margin: 11px 0 4px; font: 400 clamp(27px,3vw,38px)/1 var(--serif); }
+.schedule-item > span:last-child { font-size: 11px; color: #8c8177; }
+.celebration-note { margin: 39px 0 0; max-width: 260px; font: italic 400 22px/1.3 var(--serif); color: #9c826e; }
+
+/* 04 — Offset wedding postcard gallery */
+.moments-section { position: relative; z-index: 2; background: #faf4e9; padding-top: 140px; padding-bottom: 150px; overflow: visible; }
+.moments-edge { top: -88px; color: #faf4e9; }
+.moments-intro { max-width: 730px; margin: 0 auto 77px; text-align: center; }
+.moments-intro .editorial-title { margin: 20px 0 24px; font-size: clamp(5rem,9.5vw,9rem); }
+.moments-intro > p:last-child { margin: 0; font-size: 14px; line-height: 1.7; color: var(--text); }
+.gallery-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr .9fr; gap: 45px 70px; align-items: start; }
+.gallery-item { display: block; position: relative; padding: 0; border: 0; background: none; text-align: left; cursor: pointer; color: var(--teal); min-width: 0; }
+.gallery-item-2 { margin-top: 112px; }
+.gallery-item-3 { margin-top: -100px; }
+.gallery-item-4 { margin-top: 58px; }
+.gallery-image { display: block; position: relative; width: 100%; aspect-ratio: 3/4; background: #dcd0c4; overflow: hidden; box-shadow: 0 22px 46px #76594417; }
+.gallery-item-2 .gallery-image { aspect-ratio: 4/5; }
+.gallery-item-3 .gallery-image { aspect-ratio: 1.25; }
+.gallery-item-4 .gallery-image { aspect-ratio: 4/5; }
+.gallery-image img { transition: transform .7s cubic-bezier(.2,.7,.2,1),filter .7s; }
+.gallery-label { display: block; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; margin-top: 16px; color: #9c8371; }
+.gallery-open { position: absolute; right: 13px; bottom: 46px; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; color: var(--teal); background: #faf4e9ef; transition: background .3s, transform .3s; }
+.gallery-item:hover .gallery-open { background: white; transform: translate(2px,-2px); }
+.gallery-item:hover .gallery-image img { transform: scale(1.045); }
+.gallery-caption { margin: 108px auto 0; color: #9a7c66; text-align: center; font: 400 clamp(28px,4vw,44px)/1.1 var(--serif); }
+.gallery-caption em { color: var(--teal); }
+.moments-curve { position: absolute; width: 40%; max-width: 360px; aspect-ratio: 1; left: -25%; bottom: 4%; border: 1px solid #bfaa9354; border-radius: 50%; pointer-events: none; }
+
+/* 05 — Full-bleed coastal destination followed by functional information */
+.destination-section { position: relative; background: #ede0d0; }
+.destination-photo { height: min(72vw,690px); min-height: 450px; position: relative; overflow: hidden; background: #8aadaf; }
+.destination-photo img { object-position: center 57%; }
+.destination-photo-overlay { position: absolute; inset: 0; background: linear-gradient(180deg,#233c4b24,#1f3d4844 65%,#233c4b77); pointer-events: none; }
+.destination-photo-caption { position: absolute; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 10px; color: #fff8ec; left: 0; right: 0; bottom: 16%; text-align: center; }
+.destination-photo-caption .eyebrow { color: #fff8e9; text-shadow: 0 1px 11px #2b4c5c; }
+.destination-photo-word { font: italic 400 clamp(7rem,16vw,15rem)/.75 var(--serif); letter-spacing: -.06em; text-shadow: 0 3px 35px #1d303a5c; }
+.destination-content { text-align: center; display: flex; align-items: center; flex-direction: column; }
+.destination-content .editorial-title { font-size: clamp(4.3rem,7vw,7rem); max-width: 700px; margin: 19px auto 0; }
+.destination-content .flourish { margin-top: 26px; }
+.venue-address { margin: 66px auto 0; display: flex; align-items: center; flex-direction: column; gap: 9px; }
+.venue-address svg { color: #ad8c74; margin-bottom: 12px; }
+.venue-address h3 { margin: 0; font: 400 clamp(2.5rem,5vw,4rem)/1 var(--serif); }
+.venue-address p { margin: 5px 0 0; font: 400 16px var(--sans); color: #567477; }
+.venue-address span { color: #937e6e; font-size: 12px; }
+.venue-description { max-width: 410px; margin: 34px 0 30px; color: var(--text); font-size: 14px; line-height: 1.95; }
+.primary-button { display: inline-flex; align-items: center; justify-content: center; gap: 25px; background: var(--teal); border: 1px solid var(--teal); color: #fff8ed; text-decoration: none; padding: 18px 26px; min-width: 220px; border-radius: 2px; font-size: 10px; font-weight: 600; letter-spacing: .19em; transition: background .3s,transform .3s; }
+.primary-button:hover { background: #24464d; transform: translateY(-2px); }
+.demo-note { color: #987f6f; margin: 19px 0 0; font-size: 10px; }
+
+/* 06 — A return to the horizon, with no hard break */
+.closing-section { position: relative; isolation: isolate; overflow: hidden; min-height: 930px; display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; background: #e6bcab; color: var(--teal); padding-top: 145px; padding-bottom: 110px; }
+.closing-sky { z-index: -4; position: absolute; inset: 0; background: linear-gradient(180deg,#efd7c9,#fbe8d6 40%,#efd2b7 68%,#c5b9b1); }
+.closing-sun { position: absolute; z-index: -3; top: 36%; left: 10%; width: min(50vw,480px); aspect-ratio: 1; background: radial-gradient(circle,#fff3d6b5 0 17%,#f6d5aa6e 33%,transparent 70%); }
+.closing-sea { position: absolute; z-index: -2; bottom: -10%; left: -2%; right: -2%; height: 52%; opacity: .46; -webkit-mask-image: linear-gradient(180deg,transparent,#000 46%); mask-image: linear-gradient(180deg,transparent,#000 46%); }
+.closing-sea img { filter: sepia(.15) saturate(.7); }
+.closing-glow { position: absolute; z-index: -1; inset: 0; background: linear-gradient(180deg,#ffe7d31e,#ffe4ce81 30%,#f9dec67e 55%,transparent 92%); pointer-events: none; }
+.closing-copy { max-width: 740px; width: 100%; display: flex; flex-direction: column; align-items: center; z-index: 1; }
+.closing-title { font-size: clamp(5.2rem,10.5vw,10rem); margin: 48px 0 32px; }
+.closing-message { font: 400 14px/2 var(--sans); max-width: 390px; margin: 0 auto 34px; color: #516d6f; }
+.closing-names { font: italic 400 clamp(3rem,5vw,4.7rem)/1 var(--serif); margin: 0; color: #8d6b5f; }
+.closing-date { font-size: 10px; text-transform: uppercase; letter-spacing: .17em; margin: 17px 0 0; }
+.countdown { margin-top: 68px; width: 100%; max-width: 350px; }
+.countdown .eyebrow { color: #816e62; }
+.countdown-grid { display: grid; grid-template-columns: repeat(3,1fr); align-items: center; margin-top: 23px; }
+.countdown-unit { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+.countdown-unit + .countdown-unit { border-left: 1px solid #af988688; }
+.countdown-number { font: 400 clamp(2.6rem,5vw,4rem)/.95 var(--serif); font-variant-numeric: tabular-nums; }
+.countdown-label { font-size: 9px; letter-spacing: .18em; }
+.countdown-arrived { font: italic 400 40px var(--serif); }
+.calendar-link { margin-top: 33px; padding: 10px 4px; border-bottom: 1px solid #8c8e80; display: inline-flex; gap: 12px; align-items: center; text-decoration: none; font-size: 10px; font-weight: 600; letter-spacing: .13em; }
+.calendar-link:hover { color: #785e56; border-color: #785e56; }
+.site-footer { position: absolute; z-index: 2; bottom: 22px; left: 28px; right: 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: 9px; letter-spacing: .12em; color: #3c6062; }
+.site-footer a { text-decoration: none; }
+.site-footer > a { display: flex; gap: 5px; align-items: center; }
+.site-footer > span a { font-weight: 600; }
+
+/* Gallery viewer */
+.lightbox { position: fixed; z-index: 100; inset: 0; display: flex; align-items: center; justify-content: center; background: #102a2feb; padding: 36px 70px; backdrop-filter: blur(13px); }
+.lightbox-content { width: min(680px,100%); max-height: 90dvh; display: flex; flex-direction: column; align-items: stretch; gap: 12px; }
+.lightbox-photo { position: relative; width: 100%; height: min(72dvh,750px); background: #243d43; }
+.lightbox-photo img { object-fit: contain; }
+.lightbox-content p { margin: 0; display: flex; justify-content: space-between; color: #f8e8d6; letter-spacing: .14em; font-size: 10px; text-transform: uppercase; }
+.lightbox-close,.lightbox-arrow { border: 1px solid #ffffff48; border-radius: 50%; background: #122c2c61; color: #fff; cursor: pointer; display: grid; place-items: center; width: 44px; height: 44px; transition: background .25s; }
+.lightbox-close:hover,.lightbox-arrow:hover { background: #fff4e633; }
+.lightbox-close { position: absolute; top: max(22px,env(safe-area-inset-top)); right: 24px; }
+.lightbox-arrow { position: absolute; top: 50%; transform: translateY(-50%); }
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+
+/* Tablet and mobile adjustments */
+@media (max-width: 1050px) {
+  .celebration-section { grid-template-columns: 1fr 1fr; min-height: 680px; }
+  .celebration-photo { min-height: 680px; }
+  .celebration-info { padding: 74px 32px; }
+  .gallery-grid { gap: 38px; }
+}
+@media (max-width: 760px) {
+  .section-padding { padding: 103px 25px; }
+  .hero-title { font-size: clamp(6rem,23.5vw,9rem); }
+  .hero-copy { top: clamp(74px,12.8svh,120px); }
+  .hero-title { margin-top: clamp(39px,6.5svh,70px); }
+  .hero-details { margin-top: clamp(38px,6.5svh,60px); }
+  .hero-grass { width: 126px; }
+  .letter-section { min-height: 740px; padding-top: 118px; padding-bottom: 114px; }
+  .letter-prelude { margin-top: 46px; }
+  .letter-body { max-width: 435px; }
+  .celebration-section { display: flex; flex-direction: column; min-height: auto; }
+  .celebration-photo { min-height: 0; height: 450px; }
+  .celebration-info { padding: 91px 28px 110px; }
+  .celebration-info .editorial-title { font-size: clamp(4rem,12vw,5.9rem); }
+  .date-feature { max-width: 460px; }
+  .moments-section { padding-top: 119px; padding-bottom: 124px; }
+  .moments-intro { margin-bottom: 60px; }
+  .moments-intro .editorial-title { font-size: clamp(5.1rem,13vw,7.5rem); }
+  .gallery-grid { gap: 35px 22px; }
+  .gallery-item-2 { margin-top: 62px; }
+  .gallery-item-3 { margin-top: -55px; }
+  .gallery-item-4 { margin-top: 43px; }
+  .gallery-label { font-size: 9px; letter-spacing: .07em; }
+  .gallery-open { bottom: 34px; right: 8px; width: 30px; height: 30px; }
+  .gallery-caption { margin-top: 73px; }
+  .destination-photo { min-height: 410px; height: 65svh; max-height: 600px; }
+  .destination-content .editorial-title { font-size: clamp(4.2rem,11vw,6rem); }
+  .closing-section { min-height: 880px; padding-top: 119px; padding-bottom: 135px; }
+  .closing-title { font-size: clamp(5.2rem,13vw,8.5rem); margin-top: 43px; }
+}
+@media (max-width: 430px) {
+  .hero { min-height: 660px; }
+  .hero-topline .eyebrow { font-size: 8px; }
+  .hero-title { font-size: clamp(5.85rem,25vw,7.35rem); }
+  .hero-title em { margin: .1em 0 .12em; }
+  .hero-details { gap: 11px; margin-top: 38px; }
+  .hero-tagline { font-size: 20px; }
+  .hero-scroll { bottom: max(28px,calc(env(safe-area-inset-bottom) + 14px)); }
+  .hero-sea-image { height: 52%; }
+  .hero-sun { width: 75vw; right: -12%; top: 39%; }
+  .hero-grass-left { left: -33px; }
+  .hero-grass-right { right: -39px; }
+  .section-padding { padding-left: 22px; padding-right: 22px; }
+  .editorial-title { font-size: 4.6rem; }
+  .letter-section { min-height: 730px; }
+  .letter-title { font-size: clamp(4.1rem,16vw,5.6rem); }
+  .letter-body { font-size: 13px; line-height: 2.05; margin-top: 34px; }
+  .signature { margin-top: 34px; }
+  .letter-footnote { margin-top: 64px; font-size: 7px; }
+  .celebration-photo { height: 355px; }
+  .celebration-info { padding: 87px 22px 95px; }
+  .celebration-info .editorial-title { font-size: 4.7rem; }
+  .date-feature { margin-top: 42px; gap: 19px; padding: 21px 0; }
+  .date-feature strong { font-size: 6.3rem; }
+  .date-feature div span:first-child { font-size: 2rem; }
+  .date-feature div span:last-child { font-size: 9px; }
+  .schedule-item p { font-size: 28px; }
+  .schedule-item > span:last-child { font-size: 10px; }
+  .moments-intro .editorial-title { font-size: 5.8rem; }
+  .gallery-grid { gap: 26px 18px; }
+  .gallery-item-2 { margin-top: 58px; }
+  .gallery-item-3 { margin-top: -30px; }
+  .gallery-item-4 { margin-top: 38px; }
+  .gallery-label { font-size: 8px; line-height: 1.4; letter-spacing: .025em; }
+  .gallery-open { bottom: 37px; }
+  .destination-photo { min-height: 350px; height: 53svh; }
+  .destination-photo-word { font-size: 7rem; }
+  .destination-content .editorial-title { font-size: 4.7rem; }
+  .venue-address { margin-top: 55px; }
+  .closing-section { min-height: 855px; }
+  .closing-title { font-size: 5.5rem; }
+  .closing-message { font-size: 13px; }
+  .countdown { margin-top: 50px; }
+  .site-footer { flex-direction: column; bottom: max(17px,env(safe-area-inset-bottom)); gap: 11px; }
+  .lightbox { padding: 24px 13px; }
+  .lightbox-arrow { width: 37px; height: 37px; top: auto; bottom: 8%; }
+  .lightbox-prev { left: 20px; }
+  .lightbox-next { right: 20px; }
+  .lightbox-content { padding-bottom: 45px; }
+  .lightbox-photo { height: 65dvh; }
+}
+@media (max-width: 360px) {
+  .hero-title { font-size: 5.45rem; }
+  .hero-copy { top: 71px; }
+  .hero-details { margin-top: 30px; }
+  .hero-tagline { font-size: 18px; }
+  .letter-title { font-size: 3.8rem; }
+  .celebration-info .editorial-title { font-size: 4.25rem; }
+  .moments-intro .editorial-title { font-size: 4.7rem; }
+  .destination-content .editorial-title { font-size: 4rem; }
+  .closing-title { font-size: 4.8rem; }
+}
+@media (min-width: 1200px) {
+  .hero-copy { top: 11svh; }
+  .hero-title { margin-top: 4svh; font-size: min(13vw,11rem); }
+  .hero-details { margin-top: 5svh; }
+  .hero-sea-image { height: 53%; }
+  .hero-scroll { bottom: 39px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
