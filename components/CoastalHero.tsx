@@ -76,7 +76,7 @@ export default function CoastalHero() {
   }, []);
 
   return (
-    <section ref={chapter} className="coast-chapter" aria-labelledby="hero-title" id="top">
+    <section ref={chapter} className="coast-chapter" aria-labelledby="hero-title">
       <div ref={viewport} className="coast-viewport">
         <div className="coast-sky" aria-hidden="true">
           <div className="coast-cloud coast-cloud-one" />
