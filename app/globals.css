@@ -23,7 +23,7 @@ button { font: inherit; }
 a { color: inherit; }
 button:focus-visible, a:focus-visible { outline: 2px solid #7da2a6; outline-offset: 5px; }
 ::selection { background: #d9ba9c; color: #24474b; }
-main { width: 100%; overflow: clip; }
+main { width: 100%; overflow: visible; }
 .image-cover { object-fit: cover; }
 .section-padding { padding: 130px 28px; }
 .eyebrow { margin: 0; font: 500 10px/1.8 var(--sans); letter-spacing: .32em; text-transform: uppercase; color: #957b66; }
@@ -34,42 +34,272 @@ main { width: 100%; overflow: clip; }
 .editorial-title em { font-weight: 400; }
 .wave-edge { position: absolute; height: 90px; width: 100%; left: 0; display: block; z-index: 2; pointer-events: none; }
 
-/* 01 — Golden hour. Real photographic water sits beneath independently moving layers. */
-.hero { position: relative; width: 100%; height: 100svh; min-height: 620px; isolation: isolate; overflow: hidden; text-align: center; background: #e6c3b1; }
-.hero-sky { position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg,#d8bbbc 0%,#efd3c8 19%,#fbe9d7 44%,#f4cba9 65%,#dbb3a0 84%,#d5b6ad 100%); }
-.hero-sky::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 46% 21% at 13% 25%,#fff9ec85,transparent 100%),radial-gradient(ellipse 67% 23% at 85% 37%,#fff3d38c,transparent 100%),linear-gradient(100deg,#f4dcc01b,transparent 36%,#fee8c245 70%,transparent); opacity: .88; }
-.hero-sun { position: absolute; z-index: 1; top: 36%; right: 6%; width: min(56vw,420px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle,rgba(255,247,217,.94) 0 12%,rgba(255,230,194,.64) 17%,rgba(255,215,174,.22) 35%,transparent 71%); filter: blur(4px); pointer-events: none; }
-.hero-sea-image { position: absolute; z-index: 1; left: -3%; right: -3%; height: 57%; bottom: -4%; opacity: .83; transform: translateZ(0); -webkit-mask-image: linear-gradient(to bottom,transparent 0%,#0009 22%,#000 46%,#000 100%); mask-image: linear-gradient(to bottom,transparent 0%,#0009 22%,#000 46%,#000 100%); }
-.hero-sea-image .hero-image { object-position: 50% 38%; filter: saturate(.68) sepia(.12) brightness(1.07); }
-.hero-horizon-haze { position: absolute; z-index: 2; top: 48%; width: 100%; height: 17%; background: linear-gradient(180deg,#ffe4c540,transparent 54%,#ffe6c525); pointer-events: none; }
-.ocean-layers { position: absolute; z-index: 3; left: 0; right: 0; bottom: -2px; height: 23%; overflow: hidden; pointer-events: none; }
-.ocean-wave { position: absolute; left: -11%; width: 122%; height: 100%; transform: translate3d(0,0,0); will-change: transform; }
-.ocean-wave-back { color: #7fadb2; opacity: .26; bottom: 29%; animation: sea-drift-one 14s ease-in-out infinite alternate; }
-.ocean-wave-middle { color: #86aba8; opacity: .32; bottom: 14%; animation: sea-drift-two 18s ease-in-out infinite alternate; }
-.ocean-wave-front { color: #ead7c1; opacity: .69; bottom: -32%; animation: sea-drift-one 12s ease-in-out infinite alternate-reverse; }
-.hero-grass { position: absolute; z-index: 4; bottom: -18px; width: clamp(96px,17vw,210px); height: auto; color: #ae997f; opacity: .73; transform-origin: bottom center; pointer-events: none; }
-.hero-grass-left { left: -22px; animation: grass-sway 8s ease-in-out infinite alternate; }
-.hero-grass-right { right: -22px; transform: scaleX(-1); animation: grass-sway-reverse 9s ease-in-out infinite alternate; opacity: .59; }
-.film-grain { position: absolute; inset: 0; z-index: 4; pointer-events: none; opacity: .19; background-image: repeating-linear-gradient(115deg,transparent 0 3px,#fff6ee08 4px 5px,transparent 6px 10px), repeating-linear-gradient(25deg,transparent 0 6px,#694b3a08 7px 8px,transparent 9px 13px); mix-blend-mode: multiply; }
-.hero-copy { position: absolute; z-index: 5; top: clamp(78px,13svh,165px); left: 0; width: 100%; padding: 0 20px; display: flex; align-items: center; flex-direction: column; color: var(--teal); }
-.hero-topline .eyebrow { color: #516e71; font-size: 9px; letter-spacing: .33em; }
-.hero-topline .flourish { margin-top: 13px; }
-.hero-title { margin: clamp(29px,5svh,60px) 0 0; color: #31545d; font: 400 clamp(6.1rem,15vw,11.7rem)/.67 var(--serif); letter-spacing: -.06em; text-shadow: 0 1px 19px #ffe4cc3a; }
-.hero-title span, .hero-title em { display: block; }
-.hero-title em { font: italic 400 .42em/1.1 var(--serif); margin: .12em 0 .14em; letter-spacing: 0; color: #a87b68; }
-.hero-details { margin-top: clamp(38px,6.7svh,72px); display: flex; align-items: center; flex-direction: column; gap: 13px; }
-.hero-tagline { margin: 0; color: #3f6265; font: italic 400 clamp(18px,2.5vw,25px)/1.4 var(--serif); }
-.fine-rule { height: 1px; width: 68px; background: #9f8b78; opacity: .67; margin: 3px 0; }
-.hero-details time { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; }
-.hero-location { margin: 0; font-size: 10px; letter-spacing: .25em; text-transform: uppercase; }
-.hero-scroll { position: absolute; z-index: 6; bottom: max(31px,calc(env(safe-area-inset-bottom) + 18px)); left: 50%; transform: translateX(-50%); display: flex; align-items: center; flex-direction: column; gap: 12px; color: #375d64; text-decoration: none; white-space: nowrap; }
-.hero-scroll span { font-size: 9px; letter-spacing: .3em; }
-.hero-scroll svg { animation: discover-bob 2.8s ease-in-out infinite; }
-@keyframes sea-drift-one { to { transform: translate3d(3.5%,3px,0); } }
-@keyframes sea-drift-two { to { transform: translate3d(-3%,5px,0); } }
-@keyframes grass-sway { to { transform: rotate(2.5deg); } }
-@keyframes grass-sway-reverse { to { transform: scaleX(-1) rotate(-2.5deg); } }
-@keyframes discover-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
+/* 01 — Coastal Romance cinematic hero: all motion is transform/opacity based. */
+.coast-chapter {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  isolation: isolate;
+}
+.coast-viewport {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 620px;
+  isolation: isolate;
+  overflow: hidden;
+  background: #eacbb9;
+  text-align: center;
+}
+.coast-viewport > :not(.coast-copy):not(.coast-scroll-hint):not(.coast-scroll-track) { pointer-events: none; }
+.coast-sky {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 68% 38% at 80% 34%, #ffefc69e, transparent 74%),
+    linear-gradient(180deg, #d6b9c0 0%, #efcec7 16%, #f6d6c4 36%, #ffe4c3 51%, #eac4ad 70%, #9cb0ae 100%);
+}
+.coast-cloud {
+  position: absolute;
+  width: 96%;
+  height: 23%;
+  opacity: .7;
+  transform: translate3d(0,0,0);
+  background: radial-gradient(ellipse at 50% 50%, #fff7e7ad 0%, #fff5e53d 47%, transparent 76%);
+}
+.coast-cloud-one { top: 11%; left: -39%; }
+.coast-cloud-two { top: 32%; right: -42%; opacity: .63; }
+.coast-sun {
+  position: absolute;
+  z-index: 1;
+  width: min(70vw, 620px);
+  aspect-ratio: 1;
+  right: -14%;
+  top: 32%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff7d9e8 0 10%, #fff0cacc 13%, #fce0b277 24%, #f8d5b63b 39%, transparent 70%);
+  transform: translate3d(0,0,0);
+}
+.coast-ocean-far {
+  position: absolute;
+  z-index: 2;
+  width: 110%;
+  left: -5%;
+  bottom: -9%;
+  height: 65%;
+  overflow: hidden;
+  transform-origin: 50% 55%;
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 31%, #000 100%);
+  mask-image: linear-gradient(180deg, transparent, #000 31%, #000 100%);
+}
+.coast-ocean-photo {
+  object-fit: cover;
+  object-position: center 45%;
+  filter: sepia(.12) saturate(.72) brightness(1.06);
+}
+.coast-horizon-light {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  top: 46%;
+  height: 19%;
+  background: linear-gradient(180deg, transparent, #fff0d728 39%, #ffe9c43a 65%, transparent);
+}
+.coast-ocean-middle,
+.coast-ocean-near {
+  position: absolute;
+  left: -10%;
+  width: 120%;
+  overflow: visible;
+  transform-origin: 50% 60%;
+}
+.coast-ocean-middle { z-index: 4; bottom: -7%; height: 45%; }
+.coast-ocean-near { z-index: 6; bottom: -13%; height: 40%; }
+.coast-ocean-middle svg,
+.coast-ocean-near svg { width: 100%; height: 100%; display: block; }
+.coast-ocean-middle svg { animation: coast-breathe 9s ease-in-out infinite alternate; }
+.coast-ocean-near svg { animation: coast-breathe-reverse 12s ease-in-out infinite alternate; }
+.coast-water-shimmer {
+  position: absolute;
+  z-index: 5;
+  bottom: 3%;
+  width: 100%;
+  height: 28%;
+  opacity: .42;
+  background:
+    linear-gradient(105deg, transparent 11%, #fff8e338 17%, transparent 21%),
+    linear-gradient(83deg, transparent 40%, #fff3d83b 48%, transparent 52%),
+    linear-gradient(115deg, transparent 67%, #f6e9d23a 72%, transparent 76%);
+}
+.coast-sand {
+  position: absolute;
+  z-index: 7;
+  left: -4%;
+  width: 108%;
+  bottom: -7%;
+  height: 20%;
+  background:
+    radial-gradient(ellipse 90% 50% at 36% 26%, #fff8e1cc, transparent 85%),
+    linear-gradient(180deg, #e6d3baaa, #eddbc4 55%, #e2c6a6 100%);
+  clip-path: polygon(0 43%, 9% 36%, 19% 30%, 30% 33%, 42% 39%, 55% 35%, 69% 25%, 82% 32%, 94% 36%, 100% 32%, 100% 100%, 0 100%);
+}
+.coast-grass {
+  position: absolute;
+  z-index: 8;
+  bottom: -19px;
+  width: clamp(118px,16vw,230px);
+  height: auto;
+  color: #ab937b;
+  opacity: .78;
+  transform-origin: bottom center;
+}
+.coast-grass-left { left: -21px; }
+.coast-grass-right { right: -30px; transform: scaleX(-1); opacity: .58; }
+.coast-vignette {
+  position: absolute;
+  z-index: 9;
+  inset: 0;
+  opacity: .42;
+  background: linear-gradient(90deg,#6d7a7520,transparent 18%,transparent 82%,#98776623), linear-gradient(180deg,#e6b9b218,transparent 19%,transparent 79%,#a57e592b);
+}
+.coast-copy {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: clamp(76px, 11svh, 148px);
+  padding: 0 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #31555d;
+  transform-origin: 50% 30%;
+}
+.coast-eyebrow {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 11px;
+  color: #6b7772;
+  font-size: clamp(8px, 1vw, 10px);
+  font-weight: 500;
+  letter-spacing: .3em;
+  line-height: 1.5;
+}
+.coast-eyebrow svg { color: #ad9378; }
+.coast-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: clamp(28px, 5svh, 62px) 0 0;
+  font: 400 clamp(6rem, 16vw, 11rem)/.71 var(--serif);
+  letter-spacing: -.059em;
+  text-shadow: 0 2px 35px #ffeacc66;
+}
+.coast-heading > span { display: block; }
+.coast-name { white-space: nowrap; }
+.coast-ampersand {
+  font-size: .42em;
+  font-style: italic;
+  color: #a37a67;
+  letter-spacing: -.02em;
+  line-height: 1.23;
+  padding: .08em 0;
+}
+.coast-vow-line {
+  margin: clamp(24px, 5svh, 58px) 0 0;
+  font: italic 400 clamp(19px, 2.5vw, 27px)/1.2 var(--serif);
+  color: #3c5d60;
+}
+.coast-event-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 19px;
+  font-size: 10px;
+  letter-spacing: .21em;
+  line-height: 1.55;
+  text-transform: uppercase;
+  color: #3a5a60;
+}
+.coast-divider { display: block; width: 66px; height: 1px; margin-bottom: 9px; background: #987e6e; opacity: .7; }
+.coast-scroll-hint {
+  position: absolute;
+  z-index: 14;
+  left: 50%;
+  bottom: max(23px, calc(env(safe-area-inset-bottom) + 18px));
+  transform: translateX(-50%);
+  color: #355d65;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.coast-scroll-hint span { font-size: 9px; font-weight: 500; letter-spacing: .27em; }
+.coast-scroll-hint svg { animation: coast-hint-bob 2.5s ease-in-out infinite; }
+.coast-scroll-track { position: absolute; z-index: 15; top: 45%; right: 18px; width: 1px; height: 78px; background: #376a6d36; }
+.coast-progress-fill { width: 100%; height: 100%; display: block; background: #355d65ac; transform: scaleY(0); transform-origin: top center; }
+.coast-ivory-wipe {
+  position: absolute;
+  z-index: 20;
+  inset: 0;
+  background: #faf4e9;
+  transform: translate3d(0,125%,0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.coast-wipe-crest { position: absolute; bottom: calc(100% - 1px); left: 0; width: 100%; height: 112px; }
+.coast-wipe-message { display: flex; align-items: center; flex-direction: column; gap: 18px; padding: 30px; }
+.coast-wipe-message span { color: #a58a74; font-size: 9px; letter-spacing: .32em; }
+.coast-wipe-message p { color: #355d65; font: italic 400 clamp(2.5rem, 7vw, 5rem)/1.08 var(--serif); margin: 0; max-width: 450px; }
+@keyframes coast-breathe { to { transform: translate3d(1.3%,3px,0); } }
+@keyframes coast-breathe-reverse { to { transform: translate3d(-1.1%,4px,0); } }
+@keyframes coast-hint-bob { 50% { transform: translateY(7px); } }
+
+/* Desktop keeps a wider sky-to-ocean composition; pin distance is responsive. */
+@media (min-width: 768px) {
+  .coast-copy { top: clamp(62px, 10svh, 145px); }
+  .coast-heading { margin-top: clamp(19px, 4svh, 48px); line-height: .66; }
+  .coast-vow-line { margin-top: 4svh; }
+  .coast-ocean-far { height: 58%; }
+  .coast-ocean-middle { height: 44%; }
+  .coast-ocean-near { height: 41%; }
+  .coast-scroll-track { right: 38px; }
+}
+@media (max-width: 430px) {
+  .coast-copy { top: clamp(66px, 10.5svh, 102px); }
+  .coast-heading { font-size: clamp(5.7rem, 24vw, 7.15rem); margin-top: clamp(28px, 5.2svh, 50px); }
+  .coast-vow-line { margin-top: clamp(22px, 4svh, 43px); font-size: 20px; }
+  .coast-event-line { margin-top: 15px; gap: 7px; font-size: 9px; }
+  .coast-ocean-far { height: 62%; bottom: -7%; }
+  .coast-ocean-middle { height: 42%; bottom: -7%; }
+  .coast-ocean-near { height: 36%; bottom: -12%; }
+  .coast-grass { width: 126px; }
+  .coast-grass-left { left: -35px; }
+  .coast-grass-right { right: -39px; }
+  .coast-sun { width: 91vw; right: -30%; top: 34%; }
+  .coast-scroll-track { right: 11px; opacity: .6; }
+}
+@media (max-width: 360px), (max-height: 650px) {
+  .coast-viewport { min-height: 570px; }
+  .coast-heading { font-size: clamp(5.25rem, 23vw, 6rem); margin-top: 23px; }
+  .coast-copy { top: 56px; }
+  .coast-vow-line { margin-top: 22px; font-size: 18px; }
+  .coast-event-line { margin-top: 11px; gap: 6px; }
+  .coast-scroll-hint { bottom: max(12px, env(safe-area-inset-bottom)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .coast-ocean-middle svg, .coast-ocean-near svg, .coast-scroll-hint svg { animation: none !important; }
+  .coast-scroll-track { display: none; }
+  .coast-ivory-wipe { display: none; }
+}
 
 /* 02 — A letter on ivory paper, never in a rectangular card */
 .letter-section { position: relative; min-height: 790px; display: flex; justify-content: center; align-items: center; isolation: isolate; z-index: 4; background: var(--pearl); text-align: center; overflow: visible; }

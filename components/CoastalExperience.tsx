@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, CalendarDays, MapPin, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, CalendarDays, MapPin, X } from "lucide-react";
+import CoastalHero from "@/components/CoastalHero";
 import { wedding } from "@/lib/wedding";
 
 function SmallFlourish({ light = false }: { light?: boolean }) {
@@ -21,41 +22,6 @@ function WaveEdge({ className = "" }: { className?: string }) {
     <svg className={"wave-edge " + className} viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
       <path fill="currentColor" d="M0 73c154-39 255 30 422 9 163-20 251-57 412-38 192 24 348 72 606 11v65H0V73Z"/>
     </svg>
-  );
-}
-
-function SeaGrass({ className = "" }: { className?: string }) {
-  return (
-    <svg className={"sea-grass " + className} viewBox="0 0 145 260" fill="none" aria-hidden="true">
-      <g stroke="currentColor" strokeLinecap="round" strokeWidth="1.8">
-        <path d="M53 260C56 213 48 150 27 75M69 260C79 189 85 133 116 42M81 260C89 215 113 179 133 158M40 260C36 219 25 183 7 163M59 260C58 219 60 181 71 113"/>
-        <path d="M31 104c-17-9-22-18-26-31m28 43C46 102 48 92 49 83M101 83c10-22 20-33 31-40m-36 56c-13-19-18-30-17-42M118 181c13-11 20-13 25-13M25 202c-12-13-19-15-24-16M70 164c12-19 17-27 28-32"/>
-      </g>
-      <g fill="currentColor" opacity=".75">
-        <ellipse cx="22" cy="70" rx="4" ry="12" transform="rotate(-25 22 70)"/>
-        <ellipse cx="117" cy="40" rx="4" ry="13" transform="rotate(27 117 40)"/>
-        <ellipse cx="9" cy="160" rx="3" ry="10" transform="rotate(-30 9 160)"/>
-        <ellipse cx="73" cy="110" rx="3" ry="11" transform="rotate(12 73 110)"/>
-      </g>
-    </svg>
-  );
-}
-
-function OceanLayers() {
-  return (
-    <div className="ocean-layers" aria-hidden="true">
-      <svg className="ocean-wave ocean-wave-back" viewBox="0 0 1440 160" preserveAspectRatio="none">
-        <path d="M0 81C225 40 355 121 570 78c205-41 334-43 507-8 152 30 259 22 363-2v92H0Z" fill="currentColor"/>
-      </svg>
-      <svg className="ocean-wave ocean-wave-middle" viewBox="0 0 1440 160" preserveAspectRatio="none">
-        <path d="M0 91c202-46 391 41 582 4 190-37 286-52 467-22 181 31 286 20 391-8v95H0Z" fill="currentColor"/>
-        <path d="M0 91c202-46 391 41 582 4 190-37 286-52 467-22 181 31 286 20 391-8" stroke="#fff8eb" strokeOpacity=".64" strokeWidth="2.5" fill="none"/>
-      </svg>
-      <svg className="ocean-wave ocean-wave-front" viewBox="0 0 1440 170" preserveAspectRatio="none">
-        <path d="M0 98c174-49 344 12 510 0 187-13 289-46 476-23 190 24 305 41 454 1v94H0Z" fill="currentColor"/>
-        <path d="M0 98c174-49 344 12 510 0 187-13 289-46 476-23 190 24 305 41 454 1" stroke="#fffaf0" strokeWidth="4" strokeOpacity=".75" fill="none"/>
-      </svg>
-    </div>
   );
 }
 
@@ -172,24 +138,11 @@ export default function CoastalExperience() {
     gsap.registerPlugin(ScrollTrigger);
 
     const context = gsap.context(() => {
-      gsap.fromTo(".hero-entrance", { autoAlpha: 0, y: 23 }, {
-        autoAlpha: 1, y: 0, duration: 1.15, stagger: 0.15, ease: "power2.out", delay: 0.24,
-      });
-
       gsap.utils.toArray<HTMLElement>(".js-reveal").forEach((element) => {
         gsap.fromTo(element, { autoAlpha: 0, y: 26 }, {
           autoAlpha: 1, y: 0, duration: 0.95, ease: "power2.out",
           scrollTrigger: { trigger: element, start: "top 91%", once: true },
         });
-      });
-
-      gsap.to(".hero-sun", {
-        yPercent: 9,
-        scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 1.3 },
-      });
-      gsap.to(".hero-sea-image", {
-        yPercent: 5,
-        scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 1.5 },
       });
     }, root);
     return () => context.revert();
@@ -197,40 +150,8 @@ export default function CoastalExperience() {
 
   return (
     <main ref={root} id="top">
-      {/* SECTION 01 — THE ENDLESS HORIZON */}
-      <section className="hero" aria-labelledby="hero-title">
-        <div className="hero-sky" aria-hidden="true"/>
-        <div className="hero-sun" aria-hidden="true"/>
-        <div className="hero-sea-image" aria-hidden="true">
-          <Image src={wedding.images.hero} fill unoptimized priority sizes="100vw" alt="" className="image-cover hero-image"/>
-        </div>
-        <div className="hero-horizon-haze" aria-hidden="true"/>
-        <OceanLayers />
-        <SeaGrass className="hero-grass hero-grass-left"/>
-        <SeaGrass className="hero-grass hero-grass-right"/>
-        <div className="film-grain" aria-hidden="true"/>
-        <div className="hero-copy">
-          <div className="hero-entrance hero-topline">
-            <p className="eyebrow">A CELEBRATION BY THE SEA</p>
-            <SmallFlourish/>
-          </div>
-          <h1 className="hero-title hero-entrance" id="hero-title">
-            <span>{wedding.personOne}</span>
-            <em>&amp;</em>
-            <span>{wedding.personTwo}</span>
-          </h1>
-          <div className="hero-details hero-entrance">
-            <p className="hero-tagline">Together, where the sky meets the sea</p>
-            <span className="fine-rule"/>
-            <time dateTime={wedding.dateISO}>{wedding.dateLabel}</time>
-            <p className="hero-location">{wedding.locationLine}</p>
-          </div>
-        </div>
-        <a className="hero-scroll hero-entrance" href="#invitation" aria-label="Scroll down to discover our invitation">
-          <span>SCROLL TO DISCOVER</span>
-          <ArrowDown size={17} strokeWidth={1.2} aria-hidden="true"/>
-        </a>
-      </section>
+      {/* SECTION 01 — PINNED GOLDEN HOUR SCROLL CHAPTER */}
+      <CoastalHero />
 
       {/* SECTION 02 — THE LETTER */}
       <section id="invitation" className="letter-section section-padding" aria-labelledby="letter-heading">
